@@ -1,0 +1,399 @@
+body {
+    font-family: 'Georgia', serif;
+    background-image: linear-gradient(rgb(108, 180, 242), white);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.navbar {
+    background-color: #4a3b2b;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    justify-content: center;
+    align-content: center;
+    position: relative;  
+    z-index: 10;         
+}
+
+.navbar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-container {
+    margin-left: auto; /* Push the search bar to the right */
+    padding-right: 10px;
+}
+
+.navbar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Change from center to top of container */
+    align-items: center;
+    padding-top: 310px; /* Add some top padding to move content down slightly */
+    margin-top: -50px; /* Optional: Pull the entire container up */
+}
+
+.container h1 {
+    color: #2e4b24;
+    font-size: 50px;
+    margin: 20px 0;
+}
+
+.graph {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: auto;
+}
+
+.sun {
+    position: absolute;
+    top: -60px; /* Vertically center it */
+    left: 50%; /* Horizontally center it */
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #fff9ca, #f9e021);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    transform: translate(-50%, -50%); /* Adjust the position by half of its width and height to truly center it */
+}
+
+.circle1 {
+    position: absolute;
+    left: 400px;
+    top: 85px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.circle2 {
+    position: absolute;
+    right: 400px;
+    top: 85px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.circle3 {
+    position: absolute;
+    left: 400px;
+    bottom: 145px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.circle4 {
+    position: absolute;
+    right: 400px;
+    bottom: 145px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.circle5 {
+    position: absolute;
+    left: 200px;
+    top: 280px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.circle6 {
+    position: absolute;
+    right: 200px;
+    top: 280px;
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Hover effect for circles */
+.circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circle1:hover, .circle2:hover, .circle3:hover, .circle4:hover, .circle5:hover, .circle6:hover {
+    transform: scale(1.3); /* Expand the circle to 110% of its original size */
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* Add a subtle shadow for depth */
+    z-index: 10; /* Ensure the hovered circle appears above others */
+}
+
+.line {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background-color: #4a3b2b;
+}
+
+.footer {
+    position: fixed; /* Change to fixed positioning */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden; /* Prevent any potential overflow */
+}
+
+/* Bear tooltip container */
+.bear-tooltip-container {
+    position: relative;
+    display: inline-block;
+    z-index: 99998 !important;
+}
+
+/* Tooltip text */
+.bear-tooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom: 500%; /* Position above the bear */
+    left: 110%;
+    transform: translateY(-50%);
+    background-color: rgba(74, 59, 43, 0.9);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 8px 12px;
+    z-index: 20;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    white-space: nowrap;
+    width: 350px; 
+    font-family: 'Georgia', serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    line-height: 1.5;
+}
+
+/* Tooltip arrow */
+.bear-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(74, 59, 43, 0.9) transparent transparent transparent;
+}
+
+.bear-tooltip-container:hover .bear-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bear {
+    position: center; /* Change to fixed positioning */
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.bear-tooltip-container:hover .bear {
+    transform: scale(1.05);
+}
+
+/* Footer Images */
+.tree1 {
+    position: fixed; /* Change to fixed positioning */
+    right: 0px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 250px;
+    height: 250px;
+    filter: brightness(70%);
+}
+
+.tree2 {
+    position: fixed; /* Change to fixed positioning */
+    right: 100px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 150px;
+    height: 350;
+}
+
+.tree3 {
+    position: fixed; /* Change to fixed positioning */
+    right: 150px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 175px;
+    filter: brightness(70%);
+}
+
+.tree4 {
+    position: fixed; /* Change to fixed positioning */
+    right: 0px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 165px;
+    height: 300px;
+}
+
+.tree5 {
+    position: fixed; /* Change to fixed positioning */
+    right: 55px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 150px;
+    height: 350;
+    filter: brightness(40%);
+}
+
+.tree6 {
+    position: fixed; /* Change to fixed positioning */
+    left: 150px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 150px;
+    height: 200px;
+}
+
+.tree7 {
+    position: fixed; /* Change to fixed positioning */
+    left: 30px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 195px;
+    height: 325px;
+    filter: brightness(60%);
+}
+
+.tree8 {
+    position: fixed; /* Change to fixed positioning */
+    left: 55px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 150px;
+    filter: brightness(110%);
+}
+
+.tree9 {
+    position: fixed; /* Change to fixed positioning */
+    left: 0px;
+    bottom: 0; /* Set to bottom of viewport */
+    z-index: 1;
+    width: 150px;
+    height: 350;
+    filter: brightness(40%);
+}
+
+.bird1 {
+    position: absolute;
+    width: 100px;
+    bottom: 525px;
+    left: 75px;
+}
+
+.bird2 {
+    position: absolute;
+    width: 100px;
+    bottom: 500px;
+    right: 75px;
+}
+
+.resume-container {
+    position: relative;
+    top: 45px;
+    width: 80%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: rgba(132, 153, 126, 0.9);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+    text-align: center;
+    color: white;
+}
+
+.resume-frame {
+    width: 100%;
+    height: 425px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+}
+

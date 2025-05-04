@@ -1,0 +1,506 @@
+/* Base styles - keeping the original design */
+body {
+    font-family: 'Georgia', serif;
+    background-image: linear-gradient(rgb(108, 180, 242), white);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Set baseline stacking context */
+.navbar, .container, .graph, .footer {
+    position: relative;
+}
+
+.navbar {
+    background-color: #4a3b2b;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 9000; /* Very high z-index for navbar */
+}
+
+.navbar a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    justify-content: center;
+    align-content: center;
+    position: relative;  
+    z-index: inherit; /* Inherit z-index from navbar */
+}
+
+.navbar input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    position: relative;
+    z-index: inherit; /* Inherit z-index from navbar */
+}
+
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 310px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 99999 !important;
+    pointer-events: none;
+}
+
+.container h1 {
+    color: black;
+    font-size: 50px;
+    margin: 20px 0;
+    position: relative;
+    z-index: 99999 !important;
+    pointer-events: none;
+}
+
+.graph {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: auto;
+    z-index: 200; /* Graph container above most elements */
+}
+
+.sun {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #fff9ca, #f9e021);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    transform: translate(-50%, -50%);
+    z-index: 500; /* Sun above graph but below circles */
+}
+
+/* CIRCLES - Critical elements to fix */
+.circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+    width: 150px;
+    height: 150px;
+    background-color: #3e7336;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    position: absolute;
+    z-index: 8000 !important; /* Very high z-index with important flag to override any inheritance */
+}
+
+/* Updated circle positions for better symmetry */
+.circle1 {
+    left: 400px;
+    top: 85px;
+}
+
+.circle2 {
+    right: 400px;
+    top: 85px;
+}
+
+.circle3 {
+    left: 400px;
+    bottom: 145px;
+}
+
+.circle4 {
+    right: 400px;
+    bottom: 145px;
+}
+
+.circle5 {
+    left: 200px;
+    top: 280px;
+}
+
+.circle6 {
+    right: 200px;
+    top: 280px;
+}
+
+.circle1 a, .circle2 a, .circle3 a, .circle4 a, .circle5 a, .circle6 a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    z-index: inherit; /* Inherit z-index from parent circle */
+}
+
+/* Hover effect for circles */
+.circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.circle1:hover, .circle2:hover, .circle3:hover, .circle4:hover, .circle5:hover, .circle6:hover {
+    transform: scale(1.3);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 8500 !important; /* Even higher z-index on hover with important flag */
+}
+
+/* Improved hover transforms for mobile devices */
+@media screen and (max-width: 576px) {
+    .circle1:hover {
+        transform: translateX(-140px) scale(1.2);
+        z-index: 8500 !important;
+    }
+    
+    .circle2:hover {
+        transform: translateX(140px) scale(1.2);
+        z-index: 8500 !important;
+    }
+    
+    .circle3:hover {
+        transform: translateX(-140px) scale(1.2);
+        z-index: 8500 !important;
+    }
+    
+    .circle4:hover {
+        transform: translateX(140px) scale(1.2);
+        z-index: 8500 !important;
+    }
+    
+    .circle5:hover {
+        transform: translateX(-120px) scale(1.2);
+        z-index: 8500 !important;
+    }
+    
+    .circle6:hover {
+        transform: translateX(120px) scale(1.2);
+        z-index: 8500 !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .circle1:hover {
+        transform: translateX(-90px) scale(1.1);
+        z-index: 8500 !important;
+    }
+    
+    .circle2:hover {
+        transform: translateX(90px) scale(1.1);
+        z-index: 8500 !important;
+    }
+    
+    .circle3:hover {
+        transform: translateX(-90px) scale(1.1);
+        z-index: 8500 !important;
+    }
+    
+    .circle4:hover {
+        transform: translateX(90px) scale(1.1);
+        z-index: 8500 !important;
+    }
+    
+    .circle5:hover {
+        transform: translateX(-110px) scale(1.1);
+        z-index: 8500 !important;
+    }
+    
+    .circle6:hover {
+        transform: translateX(110px) scale(1.1);
+        z-index: 8500 !important;
+    }
+}
+
+.line {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background-color: #4a3b2b;
+    z-index: 50; /* Lines behind circles */
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    z-index: 10; /* Footer behind most elements */
+}
+
+/* Improved bear tooltip container */
+.bear-tooltip-container {
+    position: relative;
+    display: inline-block;
+    -index: 99998 !important; /* Bear tooltip above trees but below circles */
+}
+
+/* Improved tooltip styling and positioning */
+.bear-tooltip {
+    visibility: hidden;
+    position: absolute;
+    bottom: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(74, 59, 43, 0.9);
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000; /* Tooltip above most elements when visible */
+    opacity: 0;
+    transition: opacity 0.3s, visibility 0.3s;
+    white-space: normal;
+    width: 250px; /* Reduced default width */
+    max-width: 90vw; /* Prevent overflow on small screens */
+    font-family: 'Georgia', serif;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+/* Tooltip arrow */
+.bear-tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgba(74, 59, 43, 0.9) transparent transparent transparent;
+}
+
+.bear-tooltip-container:hover .bear-tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+.bear {
+    position: relative; /* Changed from center */
+    bottom: 0;
+    z-index: 300; /* Bear above trees but below circles */
+    width: 200px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.bear-tooltip-container:hover .bear {
+    transform: scale(1.05);
+}
+
+/* Footer Images with improved z-index management */
+.tree1, .tree2, .tree3, .tree4, .tree5, .tree6, .tree7, .tree8, .tree9 {
+    position: fixed;
+    bottom: 0;
+    z-index: 5 !important; /* Trees at the back with important flag */
+}
+
+.tree1 {
+    right: 0px;
+    width: 250px;
+    height: 250px;
+    filter: brightness(70%);
+}
+
+.tree2 {
+    right: 100px;
+    width: 150px;
+    height: 350px;
+}
+
+.tree3 {
+    right: 150px;
+    width: 175px;
+    filter: brightness(70%);
+}
+
+.tree4 {
+    right: 0px;
+    width: 165px;
+    height: 300px;
+}
+
+.tree5 {
+    right: 55px;
+    width: 150px;
+    height: 350px;
+    filter: brightness(40%);
+}
+
+.tree6 {
+    left: 150px;
+    width: 150px;
+    height: 200px;
+}
+
+.tree7 {
+    left: 30px;
+    width: 195px;
+    height: 325px;
+    filter: brightness(60%);
+}
+
+.tree8 {
+    left: 55px;
+    width: 150px;
+    filter: brightness(110%);
+}
+
+.tree9 {
+    left: 0px;
+    width: 150px;
+    height: 350px;
+    filter: brightness(40%);
+}
+
+.bird1 {
+    position: absolute;
+    width: 100px;
+    bottom: 525px;
+    left: 100px;
+    z-index: 20; /* Birds above trees but below other elements */
+}
+
+.bird2 {
+    position: absolute;
+    width: 100px;
+    bottom: 500px;
+    right: 100px;
+    z-index: 20; /* Birds above trees but below other elements */
+}
+
+/* Responsive Layout Adjustments */
+@media screen and (max-width: 1024px) {
+    .container h1 {
+        font-size: 40px;
+    }
+
+    .sun {
+        width: 200px;
+        height: 200px;
+        font-size: 14px;
+        top: -40px;
+    }
+
+    .circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+        width: 120px;
+        height: 120px;
+        font-size: 14px;
+    }
+
+    .circle1 { left: 300px; top: 85px; }
+    .circle2 { right: 300px; top: 85px; }
+    .circle3 { left: 300px; bottom: 145px; }
+    .circle4 { right: 300px; bottom: 145px; }
+    .circle5 { left: 150px; top: 280px; }
+    .circle6 { right: 150px; top: 280px; }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        gap: 20px;
+        padding: 8px;
+        flex-direction: column;
+    }
+
+    .container {
+        padding-top: 240px;
+        margin-top: -30px;
+    }
+
+    .container h1 {
+        font-size: 32px;
+    }
+
+    .sun {
+        width: 150px;
+        height: 150px;
+        top: -30px;
+    }
+
+    .graph {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+        width: 100px;
+        height: 100px;
+        font-size: 12px;
+    }
+
+    .circle1, .circle3, .circle5 {
+        left: 50% !important;
+        transform: translateX(-150px);
+    }
+
+    .circle2, .circle4, .circle6 {
+        right: 50% !important;
+        transform: translateX(150px);
+    }
+
+    .footer {
+        height: 120px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .sun {
+        width: 120px;
+        height: 120px;
+        top: -20px;
+    }
+
+    .circle1, .circle2, .circle3, .circle4, .circle5, .circle6 {
+        width: 80px;
+        height: 80px;
+        font-size: 10px;
+    }
+
+    .circle1, .circle3, .circle5 {
+        transform: translateX(-100px);
+    }
+
+    .circle2, .circle4, .circle6 {
+        transform: translateX(100px);
+    }
+
+    .footer {
+        height: 100px;
+    }
+
+    .navbar a {
+        font-size: 16px;
+    }
+}
