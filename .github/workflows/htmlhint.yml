@@ -1,0 +1,32 @@
+name: HTML Linting
+
+on:
+  push:
+    branches:
+      - main  # Runs when pushing to the main branch
+  pull_request:
+    branches:
+      - main  # Runs when opening a PR to the main branch
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest  # Use the latest Ubuntu for the CI environment
+    
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify the Node.js version
+        
+      - name: Install HTMLHint
+        run: npm install -g htmlhint  # Install HTMLHint globally
+        
+      - name: Run HTMLHint on index.html
+        run: htmlhint index.html  # Run the linting on the index.html file
+
+      - name: Check for errors
+        run: |
+          htmlhint index.html || exit 1  # Fail the workflow if there are errors
